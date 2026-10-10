@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Green Karen - PWA</title>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <!-- <link rel="manifest" href="manifest.json"> -->
+    <!-- <link rel="icon" href="icons/icon.svg"> -->
+    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
+</head>
+<body>
+    <header>
+        <img src="icons/logo.jpg" alt="Logo Green Karen">
+        <h1>Green Karen</h1>
+        <p class="subtitle">Comida saludable y ensaladas</p>
+    </header>
+    <main id="catalogo">
+        <!-- El JS inyectará el grid aquí -->
+    </main>
+    <footer>
+        <p><i data-lucide="map-pin" class="icon-footer"></i> Plaza Central, Local 12 &nbsp;|&nbsp; <i data-lucide="smartphone" class="icon-footer"></i> WhatsApp: 555-012-3456</p>
+        <p>&copy; 2026 Green Karen. Todos los derechos reservados.</p>
+    </footer>
+    <script src="js/csr.js"></script>
+    <script>lucide.createIcons();</script>
+    <!-- <script src="js/carrito.js"></script> -->
+    <!-- <script src="js/notificaciones.js"></script> -->
+    <!-- <script src="js/geolocalizacion.js"></script> -->
+    <!-- <script src="js/app.js"></script> -->
+    <!--
+    <script>
+        if ('serviceWorker' in navigator) {
+            navigator.serviceWorker.register('sw.js');
+        }
+    </script>
+    -->
+</body>
+</html>

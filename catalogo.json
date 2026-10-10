@@ -1,0 +1,122 @@
+[
+  {
+    "id": 1,
+    "nombre": "Poke de salmón",
+    "categoria": "Bowls",
+    "precio": 165,
+    "stock": 10,
+    "imagen": "img/poke_salmon.jpg"
+  },
+  {
+    "id": 2,
+    "nombre": "Pollo teriyaki",
+    "categoria": "Bowls",
+    "precio": 145,
+    "stock": 15,
+    "imagen": "img/pollo_teriyaki.jpg"
+  },
+  {
+    "id": 3,
+    "nombre": "Buddha vegano",
+    "categoria": "Bowls",
+    "precio": 135,
+    "stock": 12,
+    "imagen": "img/buddha_vegano.jpg"
+  },
+  {
+    "id": 4,
+    "nombre": "Bowl mexicano",
+    "categoria": "Bowls",
+    "precio": 140,
+    "stock": 20,
+    "imagen": "img/bowl_mexicano.jpg"
+  },
+  {
+    "id": 5,
+    "nombre": "Açaí bowl",
+    "categoria": "Bowls",
+    "precio": 120,
+    "stock": 18,
+    "imagen": "img/acai_bowl.jpg"
+  },
+  {
+    "id": 6,
+    "nombre": "César con pollo",
+    "categoria": "Ensaladas",
+    "precio": 125,
+    "stock": 25,
+    "imagen": "img/cesar_pollo.jpg"
+  },
+  {
+    "id": 7,
+    "nombre": "Ensalada griega",
+    "categoria": "Ensaladas",
+    "precio": 115,
+    "stock": 14,
+    "imagen": "img/ensalada_griega.jpg"
+  },
+  {
+    "id": 8,
+    "nombre": "Wrap de pavo",
+    "categoria": "Ensaladas",
+    "precio": 110,
+    "stock": 30,
+    "imagen": "img/wrap_pavo.jpg"
+  },
+  {
+    "id": 9,
+    "nombre": "Wrap de falafel",
+    "categoria": "Ensaladas",
+    "precio": 115,
+    "stock": 22,
+    "imagen": "img/wrap_falafel.jpg"
+  },
+  {
+    "id": 10,
+    "nombre": "Toast aguacate",
+    "categoria": "Ensaladas",
+    "precio": 95,
+    "stock": 40,
+    "imagen": "img/toast_aguacate.jpg"
+  },
+  {
+    "id": 11,
+    "nombre": "Jugo verde",
+    "categoria": "Bebidas",
+    "precio": 55,
+    "stock": 50,
+    "imagen": "img/jugo_verde.jpg"
+  },
+  {
+    "id": 12,
+    "nombre": "Smoothie proteico",
+    "categoria": "Bebidas",
+    "precio": 80,
+    "stock": 35,
+    "imagen": "img/smoothie_proteico.jpg"
+  },
+  {
+    "id": 13,
+    "nombre": "Agua de pepino",
+    "categoria": "Bebidas",
+    "precio": 35,
+    "stock": 60,
+    "imagen": "img/agua_pepino.jpg"
+  },
+  {
+    "id": 14,
+    "nombre": "Kombucha",
+    "categoria": "Bebidas",
+    "precio": 60,
+    "stock": 25,
+    "imagen": "img/kombucha.jpg"
+  },
+  {
+    "id": 15,
+    "nombre": "Té matcha",
+    "categoria": "Bebidas",
+    "precio": 65,
+    "stock": 45,
+    "imagen": "img/te_matcha.jpg"
+  }
+]
