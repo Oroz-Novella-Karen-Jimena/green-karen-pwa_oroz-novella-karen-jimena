@@ -1,12 +1,25 @@
-@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap');
 
 :root {
     --green: #16A34A;
     --dark-green: #14532D;
     --light-green: #F0FDF4;
+    --salad-green: #22C55E;
+    --salad-dark: #15803D;
+    --salad-light: #DCFCE7;
+    --emerald-border: #16A34A;
+    --emerald-pill: #4ADE80;
+    --accent-purple: #16A34A;
+    --accent-pink: #FACC15;
     --yellow: #FACC15;
     --dark: #1F2937;
     --bg-color: #FAFAF9;
+    --gray-100: #F3F4F6;
+    --gray-200: #E5E7EB;
+}
+
+* {
+    box-sizing: border-box;
 }
 
 body {
@@ -25,11 +38,12 @@ body::before, body::after {
     border-radius: 50%;
     z-index: -1;
     filter: blur(80px);
-    opacity: 0.3;
+    opacity: 0.25;
 }
 body::before { width: 500px; height: 500px; background: var(--green); top: -200px; left: -200px; }
 body::after { width: 400px; height: 400px; background: var(--yellow); bottom: -100px; right: -150px; }
 
+/* HEADER */
 header {
     background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='rgba(255,255,255,0.07)' fill-rule='evenodd'/%3E%3C/svg%3E"), linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
     color: white;
@@ -39,7 +53,7 @@ header {
     border-bottom-right-radius: 50px;
     box-shadow: 0 15px 30px rgba(22, 163, 74, 0.2);
     position: relative;
-    margin-bottom: 40px;
+    margin-bottom: 30px;
 }
 
 header img {
@@ -51,6 +65,10 @@ header img {
     object-fit: cover;
     box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     background: white;
+    transition: transform 0.4s ease;
+}
+header img:hover {
+    transform: rotate(5deg) scale(1.05);
 }
 
 header h1 {
@@ -61,7 +79,12 @@ header h1 {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
 }
 
-header p { margin-top: 5px; font-weight: 300; font-size: 16px; opacity: 0.9; }
+header p.subtitle {
+    margin-top: 5px;
+    font-weight: 300;
+    font-size: 16px;
+    opacity: 0.9;
+}
 
 main {
     padding: 0 20px 60px;
@@ -69,15 +92,61 @@ main {
     margin: 0 auto;
 }
 
-/* Category Headers */
+/* FILTROS POR CATEGORÍA */
+.filtros-section {
+    margin: 10px 0 30px;
+    text-align: center;
+}
+.filtros-wrapper {
+    display: inline-flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 12px;
+    background: white;
+    padding: 10px 16px;
+    border-radius: 40px;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.05);
+    border: 2px solid rgba(52, 211, 153, 0.3);
+}
+.btn-filtro {
+    background: transparent;
+    border: none;
+    padding: 10px 22px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    color: var(--dark-green);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    transition: all 0.25s ease;
+}
+.btn-filtro .icon-btn {
+    width: 18px;
+    height: 18px;
+}
+.btn-filtro:hover {
+    background: var(--light-green);
+    color: var(--green);
+    transform: translateY(-2px);
+}
+.btn-filtro.active {
+    background: linear-gradient(135deg, var(--green), var(--dark-green));
+    color: white;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.35);
+}
+
+/* CATEGORY HEADERS */
 .category-header {
     text-align: center;
-    margin: 60px 0 30px;
+    margin: 50px 0 25px;
     position: relative;
 }
 .category-header h2 {
     font-family: 'Playfair Display', serif;
-    font-size: 32px;
+    font-size: 30px;
     color: var(--dark-green);
     background: white;
     display: inline-block;
@@ -89,21 +158,26 @@ main {
     position: relative;
     z-index: 1;
 }
-.icon-leaf { width: 28px; height: 28px; vertical-align: -5px; color: var(--green); margin: 0 4px; }
-.icon-footer { width: 18px; height: 18px; vertical-align: text-bottom; color: var(--yellow); margin-right: 5px; }
+.icon-leaf {
+    width: 24px;
+    height: 24px;
+    vertical-align: -3px;
+    color: var(--green);
+    margin: 0 4px;
+}
 .category-header::before {
     content: '';
     position: absolute;
     top: 50%;
     left: 0;
     right: 0;
-    height: 3px;
+    height: 2px;
     background: linear-gradient(90deg, transparent, var(--green), transparent);
     z-index: 0;
-    opacity: 0.3;
+    opacity: 0.25;
 }
 
-/* Grid */
+/* GRID DE PRODUCTOS */
 .catalogo-grid {
     display: grid;
     grid-template-columns: 1fr;
@@ -112,52 +186,78 @@ main {
 @media (min-width: 650px) { .catalogo-grid { grid-template-columns: repeat(2, 1fr); } }
 @media (min-width: 950px) { .catalogo-grid { grid-template-columns: repeat(3, 1fr); } }
 
-/* Cards */
+/* PRODUCT CARD */
 .card {
     background: white;
     border-radius: 24px;
     overflow: hidden;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
-    border: 1px solid rgba(22, 163, 74, 0.05);
+    border: 1px solid rgba(22, 163, 74, 0.08);
     position: relative;
 }
 .card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 20px 40px rgba(22, 163, 74, 0.15);
+    transform: translateY(-8px);
+    box-shadow: 0 18px 36px rgba(22, 163, 74, 0.15);
 }
 
 .img-wrapper {
     position: relative;
-    height: 240px;
+    height: 230px;
     overflow: hidden;
 }
 .img-wrapper img {
     width: 100%;
     height: 100%;
     object-fit: cover;
-    transition: transform 0.6s ease;
+    transition: transform 0.5s ease;
 }
-.card:hover .img-wrapper img { transform: scale(1.08); }
+.card:hover .img-wrapper img {
+    transform: scale(1.08);
+}
 
 .badge-price {
     position: absolute;
-    bottom: -15px;
-    right: 20px;
+    bottom: 12px;
+    right: 15px;
     background: var(--yellow);
     color: var(--dark-green);
     font-weight: 700;
-    font-size: 20px;
-    padding: 8px 20px;
+    font-size: 19px;
+    padding: 6px 18px;
     border-radius: 30px;
-    box-shadow: 0 4px 15px rgba(250, 204, 21, 0.5);
+    box-shadow: 0 4px 12px rgba(250, 204, 21, 0.5);
     z-index: 2;
 }
 
+/* STOCK BADGE DEBAJO DE LA FOTO */
+.stock-bar {
+    padding: 10px 20px 0;
+    display: flex;
+    justify-content: flex-start;
+}
+.stock-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: #DCFCE7;
+    color: #166534;
+    font-size: 13px;
+    font-weight: 500;
+    padding: 5px 14px;
+    border-radius: 20px;
+    border: 1px solid rgba(22, 163, 74, 0.2);
+}
+.icon-stock {
+    width: 15px;
+    height: 15px;
+    color: var(--green);
+}
+
 .card-body {
-    padding: 35px 25px 25px;
+    padding: 15px 22px 22px;
     display: flex;
     flex-direction: column;
     flex-grow: 1;
@@ -165,9 +265,9 @@ main {
 }
 
 .card-title {
-    font-size: 22px;
+    font-size: 20px;
     font-weight: 600;
-    margin: 0 0 20px 0;
+    margin: 5px 0 18px 0;
     color: var(--dark-green);
 }
 
@@ -175,25 +275,321 @@ main {
     background-color: var(--green);
     color: white;
     border: none;
-    padding: 14px;
+    padding: 13px 18px;
     border-radius: 30px;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 15px;
     cursor: pointer;
     margin-top: auto;
     display: flex;
     align-items: center;
     justify-content: center;
     gap: 8px;
-    transition: all 0.2s;
-    box-shadow: 0 4px 10px rgba(22, 163, 74, 0.3);
+    transition: all 0.25s ease;
+    box-shadow: 0 4px 12px rgba(22, 163, 74, 0.3);
 }
-.btn-agregar:hover { 
-    background-color: var(--dark-green); 
-    box-shadow: 0 6px 15px rgba(20, 83, 45, 0.4);
-    transform: scale(1.02);
+.btn-agregar:hover {
+    background-color: var(--dark-green);
+    box-shadow: 0 6px 16px rgba(20, 83, 45, 0.4);
+    transform: translateY(-2px);
+}
+.btn-agregar:active {
+    transform: scale(0.97);
 }
 
+/* ===================================================
+   SECCIÓN DEL CARRITO (ESTILO CANVA / PINTEREST)
+=================================================== */
+.carrito-section {
+    margin: 60px auto 30px;
+    max-width: 850px;
+    position: relative;
+}
+
+.carrito-card {
+    position: relative;
+    background: white;
+    border: 3px solid var(--green);
+    border-radius: 28px;
+    padding: 40px 30px 30px;
+    box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12);
+}
+
+/* Pastilla superior del título "Carrito" estilo Green Karen */
+.carrito-header-pill {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #22C55E, #15803D);
+    border: 2px solid var(--dark-green);
+    padding: 8px 45px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 0px var(--yellow), 0 4px 15px rgba(22, 163, 74, 0.3);
+    z-index: 2;
+}
+.carrito-header-pill span {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+}
+
+/* Estado de Carrito Vacío */
+.carrito-vacio {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    padding: 10px 0;
+    color: #4B5563;
+    font-size: 16px;
+    font-weight: 400;
+}
+.icon-vacio {
+    width: 26px;
+    height: 26px;
+    color: var(--green);
+    flex-shrink: 0;
+}
+.carrito-vacio p {
+    margin: 0;
+}
+
+/* Lista de productos en Carrito */
+#carrito-lista {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.carrito-item {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 12px 16px;
+    background: #F9FAFB;
+    border-radius: 18px;
+    border: 1px solid var(--gray-200);
+    gap: 15px;
+    transition: background 0.2s;
+    animation: fadeIn 0.3s ease;
+}
+.carrito-item:hover {
+    background: #F0FDF4;
+}
+
+.carrito-item-info {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+}
+.carrito-thumb {
+    width: 50px;
+    height: 50px;
+    border-radius: 12px;
+    object-fit: cover;
+    border: 2px solid var(--emerald-border);
+}
+.carrito-item-detalles {
+    display: flex;
+    flex-direction: column;
+}
+.carrito-nombre {
+    font-weight: 600;
+    color: var(--dark-green);
+    font-size: 15px;
+}
+.carrito-unitario {
+    font-size: 13px;
+    color: #6B7280;
+}
+
+.carrito-controles {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.carrito-cantidad {
+    display: inline-flex;
+    align-items: center;
+    background: white;
+    border: 1px solid var(--gray-200);
+    border-radius: 25px;
+    padding: 2px 6px;
+    gap: 8px;
+}
+.btn-qty {
+    background: #F3F4F6;
+    border: none;
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--dark-green);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.btn-qty:hover {
+    background: var(--green);
+    color: white;
+}
+.carrito-cantidad__valor {
+    font-weight: 600;
+    font-size: 14px;
+    min-width: 18px;
+    text-align: center;
+}
+
+.carrito-subtotal {
+    font-weight: 700;
+    font-size: 16px;
+    color: var(--dark-green);
+    min-width: 60px;
+    text-align: right;
+}
+
+.carrito-quitar {
+    background: transparent;
+    border: none;
+    color: #9CA3AF;
+    cursor: pointer;
+    padding: 6px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.2s;
+}
+.carrito-quitar:hover {
+    color: #EF4444;
+    background: #FEE2E2;
+}
+
+/* Línea punteada sutil en verde fresco */
+.carrito-divider {
+    border-bottom: 2px dashed rgba(22, 163, 74, 0.35);
+    margin: 20px 0;
+}
+
+/* Fila inferior de total y botón sincronizar */
+.carrito-footer-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 15px;
+    margin-top: 15px;
+}
+
+.carrito-total-wrapper {
+    font-size: 18px;
+    color: var(--dark);
+}
+.total-label {
+    font-weight: 400;
+    margin-right: 6px;
+}
+.total-valor {
+    font-weight: 700;
+    font-size: 22px;
+    color: var(--dark-green);
+}
+
+/* Botón Sincronizar en verde ensalada Green Karen */
+.btn-sincronizar {
+    background: linear-gradient(135deg, var(--green), var(--dark-green));
+    color: white;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+    transition: all 0.25s ease;
+}
+.btn-sincronizar:hover {
+    background: linear-gradient(135deg, #15803D, #052E16);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 83, 45, 0.45);
+}
+.btn-sincronizar:active {
+    transform: scale(0.98);
+}
+.icon-sync {
+    width: 16px;
+    height: 16px;
+}
+
+/* Mensaje de estado de sincronización */
+.mensaje {
+    margin: 12px 0 0;
+    font-size: 14px;
+    font-weight: 500;
+    display: none;
+    animation: fadeIn 0.3s ease;
+}
+.mensaje.visible {
+    display: block;
+}
+
+/* Decoración circular en la esquina inferior en verde lechuga suave */
+.carrito-blob-corner {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #BBF7D0;
+    border: 2px solid #86EFAC;
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* TOAST FEEDBACK FLOTANTE */
+.toast-feedback {
+    position: fixed;
+    bottom: 25px;
+    right: 25px;
+    background: var(--dark-green);
+    color: white;
+    padding: 12px 24px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 500;
+    box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+    z-index: 1000;
+    opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 0.3s ease, transform 0.3s ease;
+    pointer-events: none;
+}
+.toast-feedback.show {
+    opacity: 1;
+    transform: translateY(0);
+}
+.toast-feedback.warning {
+    background: #D97706;
+}
+
+/* FOOTER */
 footer {
     background: var(--dark-green);
     color: white;
@@ -203,4 +599,54 @@ footer {
     border-top-left-radius: 50px;
     border-top-right-radius: 50px;
 }
-footer p { margin: 8px 0; opacity: 0.9; font-size: 15px; }
+footer p {
+    margin: 8px 0;
+    opacity: 0.9;
+    font-size: 15px;
+}
+.icon-footer {
+    width: 18px;
+    height: 18px;
+    vertical-align: text-bottom;
+    color: var(--yellow);
+    margin-right: 5px;
+}
+
+/* ANIMACIONES */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(6px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* RESPONSIVE DESIGN (375px) */
+@media (max-width: 500px) {
+    header {
+        padding: 35px 15px 30px;
+    }
+    header h1 {
+        font-size: 32px;
+    }
+    header img {
+        width: 110px;
+        height: 110px;
+    }
+    .carrito-card {
+        padding: 35px 16px 22px;
+    }
+    .carrito-item {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .carrito-controles {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .carrito-footer-row {
+        flex-direction: column;
+        align-items: stretch;
+        text-align: center;
+    }
+    .btn-sincronizar {
+        justify-content: center;
+    }
+}

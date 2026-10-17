@@ -16,16 +16,62 @@
         <h1>Green Karen</h1>
         <p class="subtitle">Comida saludable y ensaladas</p>
     </header>
-    <main id="catalogo">
-        <!-- El JS inyectará el grid aquí -->
+
+    <main>
+        <!-- Filtros por categoría -->
+        <section id="filtros-container" class="filtros-section"></section>
+
+        <!-- Catálogo dinámico (CSR) -->
+        <section class="catalogo-section">
+            <div id="catalogo">
+                <p class="cargando-texto">Cargando catálogo…</p>
+            </div>
+        </section>
+
+        <!-- Carrito de compras -->
+        <section class="carrito-section">
+            <div class="carrito-card">
+                <div class="carrito-header-pill">
+                    <span>Carrito</span>
+                </div>
+
+                <div id="carrito-vacio-msg" class="carrito-vacio">
+                    <i data-lucide="shopping-bag" class="icon-vacio"></i>
+                    <p>Tu carrito está vacío. ¡Agrega tu bowl o bebida favorita!</p>
+                </div>
+
+                <ul id="carrito-lista"></ul>
+
+                <div class="carrito-divider"></div>
+
+                <div class="carrito-footer-row">
+                    <div class="carrito-total-wrapper">
+                        <span class="total-label">Total:</span>
+                        <span class="total-valor">$<span id="carrito-total">0</span></span>
+                    </div>
+                    <button id="btn-sincronizar" type="button" class="btn-sincronizar">
+                        <i data-lucide="refresh-cw" class="icon-sync"></i>
+                        Sincronizar carrito
+                    </button>
+                </div>
+
+                <p id="carrito-mensaje" class="mensaje"></p>
+
+                <!-- Decoración circular estilo Canva -->
+                <div class="carrito-blob-corner"></div>
+            </div>
+        </section>
     </main>
+
     <footer>
         <p><i data-lucide="map-pin" class="icon-footer"></i> Plaza Central, Local 12 &nbsp;|&nbsp; <i data-lucide="smartphone" class="icon-footer"></i> WhatsApp: 555-012-3456</p>
         <p>&copy; 2026 Green Karen. Todos los derechos reservados.</p>
     </footer>
+
+    <!-- Scripts de la aplicación -->
+    <script src="js/carrito.js"></script>
     <script src="js/csr.js"></script>
     <script>lucide.createIcons();</script>
-    <!-- <script src="js/carrito.js"></script> -->
     <!-- <script src="js/notificaciones.js"></script> -->
     <!-- <script src="js/geolocalizacion.js"></script> -->
     <!-- <script src="js/app.js"></script> -->
