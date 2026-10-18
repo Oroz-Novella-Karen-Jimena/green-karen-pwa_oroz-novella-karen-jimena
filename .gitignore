@@ -1,0 +1,20 @@
+# Entorno virtual de Python
+servidor-ssr/venv/
+venv/
+.venv/
+env/
+
+# Base de datos SQLite de Django
+servidor-ssr/db.sqlite3
+*.sqlite3
+
+# Cache de Python y Django
+__pycache__/
+*/__pycache__/
+servidor-ssr/**/__pycache__/
+*.py[cod]
+
+# Archivos de sistema y logs
+*.log
+.DS_Store
+Thumbs.db
