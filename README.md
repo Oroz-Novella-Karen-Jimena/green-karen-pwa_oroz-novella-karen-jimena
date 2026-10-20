@@ -12,8 +12,8 @@
 
 | Avance | Hash del commit entregado | Fecha |
 |---|---|---|
-| 1 | 97966e8 | 11/10/2026 |
-| 2 | (hash del avance 2) | 18/10/2026 |
+| 1 | c7231bf | 11/10/2026 |
+| 2 | e2edadb | 18/10/2026 |
 | 3 | (hash del avance 3) | 25/10/2026 |
 | 4 | (se escribe en el reporte PDF) | 01/11/2026 |
 
