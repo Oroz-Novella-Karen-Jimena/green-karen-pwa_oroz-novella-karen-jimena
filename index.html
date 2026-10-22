@@ -11,11 +11,40 @@
     <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
 </head>
 <body>
-    <header>
-        <span id="estado-conexion" class="pill-conexion conectado"><i data-lucide="wifi" class="icon-status"></i> Conectado</span>
-        <img src="icons/logo.jpg" alt="Logo Green Karen">
+    <header class="app-header">
+        <!-- Elementos botánicos flotantes animados -->
+        <div class="leaf-bg leaf-1"><i data-lucide="leaf"></i></div>
+        <div class="leaf-bg leaf-2"><i data-lucide="sprout"></i></div>
+        <div class="leaf-bg leaf-3"><i data-lucide="sparkles"></i></div>
+        <div class="leaf-bg leaf-4"><i data-lucide="leaf"></i></div>
+
+        <!-- Indicador de conexión con glassmorphism -->
+        <span id="estado-conexion" class="pill-conexion conectado">
+            <span class="live-indicator"></span>
+            <i data-lucide="wifi" class="icon-status"></i> Conectado
+        </span>
+
+        <!-- Logo con anillo resplandeciente -->
+        <div class="logo-wrapper">
+            <div class="logo-glow-ring"></div>
+            <img src="icons/logo.jpg" alt="Logo Green Karen" class="logo-img">
+        </div>
+
+        <div class="header-badge">
+            <i data-lucide="sparkles" class="badge-icon"></i>
+            <span>Fresh & Healthy Salad Bar</span>
+            <i data-lucide="sparkles" class="badge-icon"></i>
+        </div>
+
         <h1>Green Karen</h1>
-        <p class="subtitle">Comida saludable y ensaladas</p>
+        <p class="subtitle">Comida saludable y ensaladas preparadas al momento</p>
+
+        <!-- Chips destacados de la marca -->
+        <div class="header-features">
+            <span class="feat-pill"><i data-lucide="salad" class="icon-feat"></i> Ingredientes frescos</span>
+            <span class="feat-pill"><i data-lucide="apple" class="icon-feat"></i> Bowls & Ensaladas</span>
+            <span class="feat-pill"><i data-lucide="heart" class="icon-feat"></i> 100% Nutritivo</span>
+        </div>
     </header>
 
     <main>

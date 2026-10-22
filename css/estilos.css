@@ -43,47 +43,181 @@ body::before, body::after {
 body::before { width: 500px; height: 500px; background: var(--green); top: -200px; left: -200px; }
 body::after { width: 400px; height: 400px; background: var(--yellow); bottom: -100px; right: -150px; }
 
-/* HEADER */
-header {
-    background-image: url("data:image/svg+xml,%3Csvg width='100' height='100' viewBox='0 0 100 100' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M11 18c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm48 25c3.866 0 7-3.134 7-7s-3.134-7-7-7-7 3.134-7 7 3.134 7 7 7zm-43-7c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3zm63 31c1.657 0 3-1.343 3-3s-1.343-3-3-3-3 1.343-3 3 1.343 3 3 3z' fill='rgba(255,255,255,0.07)' fill-rule='evenodd'/%3E%3C/svg%3E"), linear-gradient(135deg, var(--dark-green) 0%, var(--green) 100%);
+/* HEADER PREMIUM GREEN KAREN */
+header.app-header {
+    background: radial-gradient(circle at 50% 15%, rgba(250, 204, 21, 0.22) 0%, transparent 60%),
+                linear-gradient(145deg, #052E16 0%, #14532D 35%, #15803D 70%, #16A34A 100%);
     color: white;
-    padding: 50px 20px 40px;
+    padding: 60px 20px 50px;
     text-align: center;
-    border-bottom-left-radius: 50px;
-    border-bottom-right-radius: 50px;
-    box-shadow: 0 15px 30px rgba(22, 163, 74, 0.2);
+    border-bottom-left-radius: 60px;
+    border-bottom-right-radius: 60px;
+    border-bottom: 5px solid var(--yellow);
+    box-shadow: 0 20px 45px rgba(20, 83, 45, 0.3);
     position: relative;
-    margin-bottom: 30px;
+    margin-bottom: 40px;
+    overflow: hidden;
 }
 
-header img {
-    width: 140px;
-    height: 140px;
+/* Hojas botánicas flotantes animadas en el fondo */
+.leaf-bg {
+    position: absolute;
+    color: rgba(220, 252, 231, 0.25);
+    pointer-events: none;
+    z-index: 1;
+}
+.leaf-1 {
+    top: 25px;
+    left: 8%;
+    font-size: 38px;
+    animation: floatLeaf1 6s ease-in-out infinite;
+}
+.leaf-2 {
+    bottom: 35px;
+    left: 14%;
+    font-size: 32px;
+    animation: floatLeaf2 7s ease-in-out infinite;
+}
+.leaf-3 {
+    top: 30px;
+    right: 12%;
+    font-size: 30px;
+    animation: floatLeaf1 8s ease-in-out infinite reverse;
+}
+.leaf-4 {
+    bottom: 25px;
+    right: 7%;
+    font-size: 36px;
+    animation: floatLeaf2 6.5s ease-in-out infinite;
+}
+
+@keyframes floatLeaf1 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-12px) rotate(10deg); }
+}
+@keyframes floatLeaf2 {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(12px) rotate(-12deg); }
+}
+
+/* Logo con aura y resplandor */
+.logo-wrapper {
+    position: relative;
+    display: inline-block;
+    margin-bottom: 12px;
+    z-index: 2;
+}
+
+.logo-glow-ring {
+    position: absolute;
+    top: -8px;
+    left: -8px;
+    right: -8px;
+    bottom: -8px;
     border-radius: 50%;
-    margin-bottom: 15px;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.4) 0%, transparent 70%);
+    animation: pulseGlow 3s infinite ease-in-out;
+    z-index: -1;
+}
+
+@keyframes pulseGlow {
+    0%, 100% { transform: scale(0.96); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.9; }
+}
+
+header img.logo-img {
+    width: 145px;
+    height: 145px;
+    border-radius: 50%;
     border: 6px solid var(--yellow);
+    box-shadow: 0 0 0 4px rgba(250, 204, 21, 0.35), 0 12px 28px rgba(0,0,0,0.35);
     object-fit: cover;
-    box-shadow: 0 10px 25px rgba(0,0,0,0.3);
     background: white;
     transition: transform 0.4s ease;
+    display: block;
 }
-header img:hover {
-    transform: rotate(5deg) scale(1.05);
+header img.logo-img:hover {
+    transform: rotate(6deg) scale(1.06);
+}
+
+/* Badge superior elegante */
+.header-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(250, 204, 21, 0.6);
+    color: var(--yellow);
+    padding: 5px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    letter-spacing: 0.5px;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+}
+.badge-icon {
+    width: 14px;
+    height: 14px;
 }
 
 header h1 {
     margin: 0;
     font-family: 'Playfair Display', serif;
-    font-size: 42px;
-    letter-spacing: 1px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+    font-size: 46px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    text-shadow: 2px 3px 6px rgba(0,0,0,0.3);
+    position: relative;
+    z-index: 2;
 }
 
 header p.subtitle {
-    margin-top: 5px;
-    font-weight: 300;
+    margin-top: 6px;
+    font-weight: 400;
     font-size: 16px;
-    opacity: 0.9;
+    opacity: 0.95;
+    color: #DCFCE7;
+    position: relative;
+    z-index: 2;
+}
+
+/* Fila de características destacadas */
+.header-features {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 18px;
+    position: relative;
+    z-index: 2;
+}
+
+.feat-pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    backdrop-filter: blur(8px);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    padding: 6px 14px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 500;
+    transition: all 0.25s ease;
+}
+.feat-pill:hover {
+    background: rgba(255, 255, 255, 0.22);
+    transform: translateY(-2px);
+    border-color: var(--yellow);
+}
+.icon-feat {
+    width: 15px;
+    height: 15px;
+    color: var(--yellow);
 }
 
 main {
@@ -618,20 +752,21 @@ footer p {
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* PÍLDORA DE ESTADO DE CONEXIÓN */
+/* PÍLDORA DE ESTADO DE CONEXIÓN CON GLASSMORPHISM */
 .pill-conexion {
     position: absolute;
-    top: 18px;
-    right: 25px;
+    top: 22px;
+    right: 28px;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
-    padding: 6px 14px;
-    border-radius: 20px;
+    gap: 8px;
+    padding: 8px 16px;
+    border-radius: 30px;
     font-size: 13px;
     font-weight: 600;
     font-family: 'Poppins', sans-serif;
-    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 8px 20px rgba(0,0,0,0.2);
     transition: all 0.3s ease;
     z-index: 10;
 }
@@ -639,16 +774,35 @@ footer p {
     width: 14px;
     height: 14px;
 }
+.live-indicator {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+}
 .pill-conexion.conectado {
-    background: #DCFCE7;
-    color: #15803D;
-    border: 1px solid #86EFAC;
+    background: rgba(220, 252, 231, 0.92);
+    color: #14532D;
+    border: 1.5px solid #86EFAC;
+}
+.pill-conexion.conectado .live-indicator {
+    background: #16A34A;
+    box-shadow: 0 0 8px #16A34A;
+    animation: livePulse 2s infinite;
 }
 .pill-conexion.sin-conexion {
-    background: #FEE2E2;
+    background: rgba(254, 226, 226, 0.95);
     color: #DC2626;
-    border: 1px solid #FCA5A5;
+    border: 1.5px solid #FCA5A5;
     animation: pulseAlert 1.5s infinite;
+}
+.pill-conexion.sin-conexion .live-indicator {
+    background: #DC2626;
+    box-shadow: 0 0 8px #DC2626;
+}
+@keyframes livePulse {
+    0%, 100% { opacity: 1; transform: scale(1); }
+    50% { opacity: 0.4; transform: scale(1.2); }
 }
 @keyframes pulseAlert {
     0%, 100% { transform: scale(1); }

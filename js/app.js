@@ -6,10 +6,10 @@ function actualizarPildoraConexion() {
     if (!pildora) return;
 
     if (navigator.onLine) {
-        pildora.innerHTML = '<i data-lucide="wifi" class="icon-status"></i> Conectado';
+        pildora.innerHTML = '<span class="live-indicator"></span> <i data-lucide="wifi" class="icon-status"></i> Conectado';
         pildora.className = "pill-conexion conectado";
     } else {
-        pildora.innerHTML = '<i data-lucide="wifi-off" class="icon-status"></i> Sin conexión';
+        pildora.innerHTML = '<span class="live-indicator"></span> <i data-lucide="wifi-off" class="icon-status"></i> Sin conexión';
         pildora.className = "pill-conexion sin-conexion";
     }
 
