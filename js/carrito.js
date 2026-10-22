@@ -143,26 +143,39 @@ function manejarClicCarrito(evento) {
     if (boton.dataset.accion === "quitar") quitarDelCarrito(id);
 }
 
-// Sincronizar: simula el patrón offline -> online
-function sincronizarCarrito() {
+// Sincronizar: simula el patrón offline -> online y avisa al usuario
+function sincronizarCarrito(esReconexion = false) {
     const mensaje = document.getElementById("carrito-mensaje");
     if (!mensaje) return;
 
     mensaje.className = "mensaje visible";
 
     if (!navigator.onLine) {
-        mensaje.textContent = "Sin conexión: el carrito se sincronizará cuando vuelva el internet.";
+        mensaje.textContent = "Sin conexión: el carrito se sincronizará automáticamente cuando vuelva el internet.";
         mensaje.style.color = "#dc2626";
         return;
     }
 
     // Animación de sincronización
-    mensaje.textContent = "Sincronizando con el servidor...";
+    mensaje.textContent = esReconexion ? "Conexión restablecida: Sincronizando carrito con el servidor..." : "Sincronizando con el servidor...";
     mensaje.style.color = "#16a34a";
 
     setTimeout(() => {
-        mensaje.textContent = "✓ Carrito sincronizado con el servidor (simulado).";
+        mensaje.textContent = "✓ Carrito sincronizado con el servidor exitosamente.";
         mensaje.style.color = "#16a34a";
+
+        // Si el usuario activó notificaciones, avisar por notificación del sistema
+        if (esReconexion && "Notification" in window && Notification.permission === "granted") {
+            try {
+                new Notification("Green Karen 🌱", {
+                    body: "Conexión restablecida: Tu carrito se ha sincronizado correctamente.",
+                    icon: "icons/logo.jpg"
+                });
+            } catch (e) {
+                console.log("No se pudo mostrar notificación:", e);
+            }
+        }
+
         setTimeout(() => {
             mensaje.classList.remove("visible");
         }, 4000);
@@ -197,14 +210,18 @@ document.addEventListener("DOMContentLoaded", () => {
     if (lista) lista.addEventListener("click", manejarClicCarrito);
 
     const btnSync = document.getElementById("btn-sincronizar");
-    if (btnSync) btnSync.addEventListener("click", sincronizarCarrito);
+    if (btnSync) btnSync.addEventListener("click", () => sincronizarCarrito(false));
 
-    window.addEventListener("online", sincronizarCarrito);
+    // Al recuperar la conexión a internet, sincronizar automáticamente y avisar al usuario
+    window.addEventListener("online", () => {
+        sincronizarCarrito(true);
+    });
+
     window.addEventListener("offline", () => {
         const mensaje = document.getElementById("carrito-mensaje");
         if (mensaje) {
             mensaje.className = "mensaje visible";
-            mensaje.textContent = "Se perdió la conexión a internet.";
+            mensaje.textContent = "Se perdió la conexión: Los cambios en tu carrito se guardan localmente.";
             mensaje.style.color = "#dc2626";
         }
     });

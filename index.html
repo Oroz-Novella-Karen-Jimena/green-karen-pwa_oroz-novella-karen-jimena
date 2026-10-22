@@ -12,6 +12,7 @@
 </head>
 <body>
     <header>
+        <span id="estado-conexion" class="pill-conexion conectado"><i data-lucide="wifi" class="icon-status"></i> Conectado</span>
         <img src="icons/logo.jpg" alt="Logo Green Karen">
         <h1>Green Karen</h1>
         <p class="subtitle">Comida saludable y ensaladas</p>
@@ -61,6 +62,30 @@
                 <div class="carrito-blob-corner"></div>
             </div>
         </section>
+
+        <!-- Notificaciones de ofertas saludables -->
+        <section class="notificaciones-section">
+            <div class="notificaciones-card">
+                <div class="notif-header-pill">
+                    <span>Promociones</span>
+                </div>
+                <div class="notif-content">
+                    <div class="notif-icon-circle">
+                        <i data-lucide="bell" class="icon-notif-main"></i>
+                    </div>
+                    <div class="notif-textos">
+                        <h3>Notificaciones de ofertas</h3>
+                        <p>Activa los avisos para enterarte de descuentos en bowls, nuevas ensaladas y el estado de tu pedido.</p>
+                    </div>
+                    <button id="btn-notificar" type="button" class="btn-notificar">
+                        <i data-lucide="bell-ring" class="icon-btn"></i>
+                        Activar notificaciones
+                    </button>
+                </div>
+                <p id="notificaciones-mensaje" class="mensaje"></p>
+                <div class="notif-blob-corner"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -71,10 +96,10 @@
     <!-- Scripts de la aplicación -->
     <script src="js/carrito.js"></script>
     <script src="js/csr.js"></script>
+    <script src="js/notificaciones.js"></script>
+    <script src="js/app.js"></script>
     <script>lucide.createIcons();</script>
-    <!-- <script src="js/notificaciones.js"></script> -->
     <!-- <script src="js/geolocalizacion.js"></script> -->
-    <!-- <script src="js/app.js"></script> -->
     <!--
     <script>
         if ('serviceWorker' in navigator) {
