@@ -928,6 +928,186 @@ footer p {
     pointer-events: none;
 }
 
+/* ===================================================
+   SECCIÓN DE GEOLOCALIZACIÓN Y SUCURSAL
+=================================================== */
+.ubicacion-section {
+    margin: 60px auto 40px;
+    max-width: 850px;
+    position: relative;
+}
+
+.ubicacion-card {
+    position: relative;
+    background: white;
+    border: 3px solid var(--green);
+    border-radius: 28px;
+    padding: 42px 30px 30px;
+    box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12);
+}
+
+.ubicacion-header-pill {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #22C55E, #15803D);
+    border: 2px solid var(--dark-green);
+    padding: 8px 45px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 0px var(--yellow), 0 4px 15px rgba(22, 163, 74, 0.3);
+    z-index: 2;
+}
+
+.ubicacion-header-pill span {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+    white-space: nowrap;
+}
+
+.ubicacion-info-box {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    margin-bottom: 8px;
+}
+
+.ubicacion-detalles h3 {
+    margin: 0 0 6px 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 20px;
+    color: var(--dark-green);
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.icon-loc {
+    width: 22px;
+    height: 22px;
+    color: var(--green);
+    flex-shrink: 0;
+}
+
+.sucursal-direccion,
+.sucursal-horario {
+    margin: 3px 0;
+    color: #4B5563;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+}
+
+.icon-mini {
+    width: 15px;
+    height: 15px;
+    color: var(--green);
+    flex-shrink: 0;
+}
+
+.btn-ubicacion {
+    background: linear-gradient(135deg, var(--green), var(--dark-green));
+    color: white;
+    border: none;
+    padding: 13px 24px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 14px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+    transition: all 0.25s ease;
+}
+
+.btn-ubicacion:hover {
+    background: linear-gradient(135deg, #15803D, #052E16);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(20, 83, 45, 0.45);
+}
+
+.btn-ubicacion:active {
+    transform: scale(0.97);
+}
+
+.mapa-container {
+    height: 380px;
+    width: 100%;
+    border-radius: 20px;
+    border: 2px solid #BBF7D0;
+    margin-top: 20px;
+    box-shadow: 0 8px 24px rgba(20, 83, 45, 0.1);
+    overflow: hidden;
+    z-index: 1;
+}
+
+.ubicacion-blob-corner {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #FEF08A;
+    border: 2px solid var(--yellow);
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+}
+
+.link-mapa {
+    color: var(--green);
+    font-weight: 600;
+    text-decoration: underline;
+    margin-left: 6px;
+}
+
+.link-mapa:hover {
+    color: var(--dark-green);
+}
+
+/* Estilos de estado para mensajes (exito, error, info, aviso) */
+.mensaje.info {
+    color: #1D4ED8;
+    background: #EFF6FF;
+    border: 1px solid #BFDBFE;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
+.mensaje.exito {
+    color: #15803D;
+    background: #F0FDF4;
+    border: 1px solid #BBF7D0;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
+.mensaje.error {
+    color: #B91C1C;
+    background: #FEF2F2;
+    border: 1px solid #FECACA;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
+.mensaje.aviso {
+    color: #B45309;
+    background: #FFFBEB;
+    border: 1px solid #FDE68A;
+    padding: 10px 16px;
+    border-radius: 12px;
+}
+
 /* RESPONSIVE DESIGN (375px) */
 @media (max-width: 500px) {
     header {
@@ -958,5 +1138,19 @@ footer p {
     }
     .btn-sincronizar {
         justify-content: center;
+    }
+    .ubicacion-card {
+        padding: 35px 16px 22px;
+    }
+    .ubicacion-info-box {
+        flex-direction: column;
+        align-items: stretch;
+    }
+    .btn-ubicacion {
+        justify-content: center;
+        width: 100%;
+    }
+    .mapa-container {
+        height: 280px;
     }
 }

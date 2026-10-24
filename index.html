@@ -6,9 +6,10 @@
     <title>Green Karen - PWA</title>
     <link rel="stylesheet" href="css/estilos.css">
     <script src="https://unpkg.com/lucide@latest"></script>
-    <!-- <link rel="manifest" href="manifest.json"> -->
-    <!-- <link rel="icon" href="icons/icon.svg"> -->
-    <!-- <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" /> -->
+    <link rel="manifest" href="manifest.json">
+    <meta name="theme-color" content="#14532D">
+    <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
     <header class="app-header">
@@ -115,6 +116,30 @@
                 <div class="notif-blob-corner"></div>
             </div>
         </section>
+
+        <!-- Geolocalización y Sucursal -->
+        <section class="ubicacion-section">
+            <div class="ubicacion-card">
+                <div class="ubicacion-header-pill">
+                    <span>Nuestra Sucursal</span>
+                </div>
+                <div class="ubicacion-info-box">
+                    <div class="ubicacion-detalles">
+                        <h3><i data-lucide="map-pin" class="icon-loc"></i> Green Karen — Plaza Central</h3>
+                        <p class="sucursal-direccion">Plaza Central, Local 12 · Hermosillo, Sonora</p>
+                        <p class="sucursal-horario"><i data-lucide="clock" class="icon-mini"></i> Abierto hoy: 8:00 AM – 9:00 PM</p>
+                    </div>
+                    <button id="btn-ubicacion" type="button" class="btn-ubicacion">
+                        <i data-lucide="navigation" class="icon-btn"></i>
+                        Calcular distancia y ruta
+                    </button>
+                </div>
+                <p id="ubicacion-mensaje" class="mensaje"></p>
+                <!-- Mapa interactivo Leaflet -->
+                <div id="mapa-ruta" class="mapa-container" hidden></div>
+                <div class="ubicacion-blob-corner"></div>
+            </div>
+        </section>
     </main>
 
     <footer>
@@ -127,8 +152,10 @@
     <script src="js/csr.js"></script>
     <script src="js/notificaciones.js"></script>
     <script src="js/app.js"></script>
+    <!-- Leaflet y geolocalización -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
+    <script src="js/geolocalizacion.js"></script>
     <script>lucide.createIcons();</script>
-    <!-- <script src="js/geolocalizacion.js"></script> -->
     <!--
     <script>
         if ('serviceWorker' in navigator) {
