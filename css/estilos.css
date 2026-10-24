@@ -929,24 +929,83 @@ footer p {
 }
 
 /* ===================================================
-   SECCIÓN DE GEOLOCALIZACIÓN Y SUCURSAL
+   DESPLAZAMIENTO SUAVE
 =================================================== */
-.ubicacion-section {
-    margin: 60px auto 40px;
-    max-width: 850px;
+html {
+    scroll-behavior: smooth;
+}
+
+/* ===================================================
+   BARRA DE NAVEGACIÓN RÁPIDA (HEADER)
+=================================================== */
+.quick-nav-bar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 12px;
+    flex-wrap: wrap;
+    margin-top: 24px;
+    z-index: 2;
     position: relative;
 }
 
-.ubicacion-card {
+.nav-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    background: rgba(255, 255, 255, 0.16);
+    border: 1.5px solid rgba(255, 255, 255, 0.35);
+    color: white;
+    text-decoration: none;
+    padding: 9px 18px;
+    border-radius: 30px;
+    font-size: 14px;
+    font-weight: 600;
+    backdrop-filter: blur(8px);
+    box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12);
+    transition: all 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.nav-chip .icon-nav {
+    width: 16px;
+    height: 16px;
+    color: var(--yellow);
+    transition: transform 0.25s ease;
+}
+
+.nav-chip:hover {
+    background: white;
+    color: var(--dark-green);
+    border-color: white;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 18px rgba(0, 0, 0, 0.22);
+}
+
+.nav-chip:hover .icon-nav {
+    color: var(--green);
+    transform: scale(1.15);
+}
+
+/* ===================================================
+   SECCIÓN DE SUCURSAL Y RUTA (TARJETA TEMÁTICA GREEN KAREN)
+=================================================== */
+.sucursal-section {
+    margin: 70px auto 40px;
+    max-width: 950px;
+    position: relative;
+}
+
+.sucursal-card {
     position: relative;
     background: white;
     border: 3px solid var(--green);
     border-radius: 28px;
-    padding: 42px 30px 30px;
-    box-shadow: 0 12px 30px rgba(22, 163, 74, 0.12);
+    padding: 44px 32px 34px;
+    box-shadow: 0 16px 36px rgba(22, 163, 74, 0.12);
 }
 
-.ubicacion-header-pill {
+/* Pastilla superior del título */
+.sucursal-header-pill {
     position: absolute;
     top: -24px;
     left: 50%;
@@ -959,7 +1018,7 @@ footer p {
     z-index: 2;
 }
 
-.ubicacion-header-pill span {
+.sucursal-header-pill span {
     font-family: 'Playfair Display', serif;
     font-size: 22px;
     font-weight: 700;
@@ -969,90 +1028,394 @@ footer p {
     white-space: nowrap;
 }
 
-.ubicacion-info-box {
+/* Cabecera interna de la sucursal */
+.sucursal-card-header {
     display: flex;
     align-items: center;
     justify-content: space-between;
-    gap: 20px;
+    gap: 16px;
     flex-wrap: wrap;
-    margin-bottom: 8px;
+    padding-bottom: 20px;
+    border-bottom: 2px dashed #DCFCE7;
+    margin-bottom: 24px;
 }
 
-.ubicacion-detalles h3 {
-    margin: 0 0 6px 0;
+.sucursal-marca-box {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+}
+
+.sucursal-insignia {
+    width: 50px;
+    height: 50px;
+    border-radius: 16px;
+    background: linear-gradient(135deg, #DCFCE7, #FEF9C3);
+    border: 2px solid #86EFAC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    flex-shrink: 0;
+}
+.sucursal-insignia svg {
+    width: 26px;
+    height: 26px;
+}
+
+.sucursal-titulos h3 {
+    margin: 0;
     font-family: 'Playfair Display', serif;
-    font-size: 20px;
+    font-size: 22px;
     color: var(--dark-green);
-    display: flex;
-    align-items: center;
-    gap: 8px;
 }
 
-.icon-loc {
-    width: 22px;
-    height: 22px;
-    color: var(--green);
-    flex-shrink: 0;
-}
-
-.sucursal-direccion,
-.sucursal-horario {
-    margin: 3px 0;
-    color: #4B5563;
+.sucursal-subtitulo {
+    margin: 4px 0 0;
+    color: #6B7280;
     font-size: 14px;
-    display: flex;
-    align-items: center;
-    gap: 6px;
 }
 
-.icon-mini {
-    width: 15px;
-    height: 15px;
-    color: var(--green);
-    flex-shrink: 0;
-}
-
-.btn-ubicacion {
-    background: linear-gradient(135deg, var(--green), var(--dark-green));
-    color: white;
-    border: none;
-    padding: 13px 24px;
-    border-radius: 30px;
-    font-family: 'Poppins', sans-serif;
-    font-weight: 600;
-    font-size: 14px;
-    cursor: pointer;
+/* Indicador de estado abierto/cerrado */
+.estado-sucursal {
     display: inline-flex;
     align-items: center;
     gap: 8px;
-    box-shadow: 0 4px 14px rgba(22, 163, 74, 0.3);
+    padding: 6px 16px;
+    border-radius: 20px;
+    font-size: 13px;
+    font-weight: 600;
+    background: #F3F4F6;
+    color: #4B5563;
+    border: 1px solid #E5E7EB;
+}
+.estado-sucursal::before {
+    content: "";
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #9CA3AF;
+}
+.estado-sucursal.abierto {
+    background: #DCFCE7;
+    color: #166534;
+    border-color: #86EFAC;
+}
+.estado-sucursal.abierto::before {
+    background: #22C55E;
+    box-shadow: 0 0 0 4px rgba(34, 197, 94, 0.25);
+    animation: pulsoStatus 2s infinite;
+}
+.estado-sucursal.cerrado {
+    background: #FEE2E2;
+    color: #991B1B;
+    border-color: #FCA5A5;
+}
+.estado-sucursal.cerrado::before {
+    background: #EF4444;
+}
+
+@keyframes pulsoStatus {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(34, 197, 94, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(34, 197, 94, 0); }
+}
+
+/* Cuerpo en dos columnas */
+.sucursal-card-body {
+    display: grid;
+    grid-template-columns: 1fr 1.15fr;
+    gap: 28px;
+    align-items: start;
+}
+
+/* Columna de información */
+.sucursal-info-col {
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.sucursal-items-lista {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.sucursal-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 12px;
+    background: #F9FAFB;
+    border: 1px solid #E5E7EB;
+    border-radius: 16px;
+    padding: 12px 14px;
+    transition: all 0.2s ease;
+}
+.sucursal-info-item:hover {
+    background: #F0FDF4;
+    border-color: #BBF7D0;
+    transform: translateX(3px);
+}
+
+.item-icono-circulo {
+    width: 36px;
+    height: 36px;
+    border-radius: 10px;
+    background: #DCFCE7;
+    color: var(--green);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.item-icono-circulo svg {
+    width: 18px;
+    height: 18px;
+}
+
+.item-texto {
+    display: flex;
+    flex-direction: column;
+    font-size: 13px;
+}
+.item-texto strong {
+    color: var(--dark-green);
+    font-size: 13.5px;
+}
+.item-texto span {
+    color: #4B5563;
+    margin-top: 1px;
+}
+
+/* Métricas de Distancia y Tiempo */
+.sucursal-metricas-box {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+}
+
+.metrica-card {
+    background: linear-gradient(135deg, #F0FDF4, #FEFCE8);
+    border: 1.5px solid #BBF7D0;
+    border-radius: 16px;
+    padding: 14px 12px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 2px;
+}
+
+.icon-metrica {
+    width: 20px;
+    height: 20px;
+    color: var(--green);
+    margin-bottom: 2px;
+}
+
+.metrica-lbl {
+    font-size: 12px;
+    color: #6B7280;
+    font-weight: 500;
+}
+
+.metrica-num {
+    font-size: 20px;
+    color: var(--dark-green);
+    font-weight: 700;
+}
+
+/* Botones de acción */
+.sucursal-acciones-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.btn-calcular-ruta {
+    background: linear-gradient(135deg, #22C55E, #15803D);
+    color: white;
+    border: 2px solid var(--dark-green);
+    padding: 14px 22px;
+    border-radius: 30px;
+    font-family: 'Poppins', sans-serif;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    box-shadow: 2px 3px 0px var(--yellow), 0 6px 18px rgba(22, 163, 74, 0.3);
     transition: all 0.25s ease;
 }
 
-.btn-ubicacion:hover {
-    background: linear-gradient(135deg, #15803D, #052E16);
+.btn-calcular-ruta svg {
+    width: 18px;
+    height: 18px;
+}
+
+.btn-calcular-ruta:hover {
+    background: linear-gradient(135deg, #16A34A, #14532D);
     transform: translateY(-2px);
-    box-shadow: 0 6px 18px rgba(20, 83, 45, 0.45);
+    box-shadow: 3px 4px 0px var(--yellow), 0 8px 22px rgba(20, 83, 45, 0.4);
 }
 
-.btn-ubicacion:active {
-    transform: scale(0.97);
+.btn-calcular-ruta:active {
+    transform: scale(0.98);
 }
 
-.mapa-container {
-    height: 380px;
+.btn-calcular-ruta:disabled {
+    opacity: 0.75;
+    cursor: wait;
+}
+
+.link-mapa-externo {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 6px;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--green);
+    text-decoration: none;
+    padding: 6px;
+    transition: color 0.2s ease;
+}
+.link-mapa-externo svg {
+    width: 15px;
+    height: 15px;
+}
+.link-mapa-externo:hover {
+    color: var(--dark-green);
+    text-decoration: underline;
+}
+
+/* Columna del Mapa */
+.sucursal-mapa-col {
+    position: relative;
     width: 100%;
-    border-radius: 20px;
-    border: 2px solid #BBF7D0;
-    margin-top: 20px;
-    box-shadow: 0 8px 24px rgba(20, 83, 45, 0.1);
+}
+
+.mapa-marco-estilizado {
+    position: relative;
+    height: 380px;
+    border-radius: 22px;
     overflow: hidden;
+    border: 3px solid #BBF7D0;
+    box-shadow: 0 10px 28px rgba(22, 163, 74, 0.15);
+    background: #E5E7EB;
+}
+
+.mapa-marco-estilizado .mapa-container {
+    width: 100%;
+    height: 100%;
     z-index: 1;
 }
 
-.ubicacion-blob-corner {
+.mapa-leyenda-flotante {
     position: absolute;
-    bottom: -15px;
+    bottom: 14px;
+    left: 14px;
+    z-index: 500;
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid #86EFAC;
+    border-radius: 20px;
+    padding: 6px 14px;
+    display: flex;
+    gap: 12px;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.badge-leyenda {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--dark-green);
+}
+
+.dot-color {
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    display: inline-block;
+}
+.dot-verde {
+    background: var(--green);
+}
+.dot-azul {
+    background: #2563EB;
+}
+
+/* Marcadores personalizados Leaflet */
+.marcador-gk {
+    background: transparent;
+    border: none;
+}
+.pin-sucursal {
+    width: 42px;
+    height: 42px;
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    background: linear-gradient(135deg, #22C55E, #14532D);
+    border: 3px solid white;
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.35);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: rebotePin 2.4s ease-in-out infinite;
+}
+.pin-sucursal svg {
+    transform: rotate(45deg);
+}
+
+@keyframes rebotePin {
+    0%, 100% { margin-top: 0; }
+    50% { margin-top: -6px; }
+}
+
+.pin-usuario {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    background: rgba(37, 99, 235, 0.25);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    animation: pulsoUsuario 2s infinite;
+}
+.pin-usuario span {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: #2563EB;
+    border: 3px solid white;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.4);
+}
+
+@keyframes pulsoUsuario {
+    0% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0.5); }
+    70% { box-shadow: 0 0 0 14px rgba(37, 99, 235, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(37, 99, 235, 0); }
+}
+
+/* Ruta animada */
+.ruta-animada {
+    stroke-dasharray: 2000;
+    stroke-dashoffset: 2000;
+    animation: trazarRuta 2.2s ease forwards;
+}
+@keyframes trazarRuta {
+    to { stroke-dashoffset: 0; }
+}
+
+/* Decoraciones circulares de las esquinas */
+.sucursal-blob-corner-tl {
+    position: absolute;
+    top: -15px;
     left: -15px;
     width: 38px;
     height: 38px;
@@ -1064,64 +1427,246 @@ footer p {
     pointer-events: none;
 }
 
-.link-mapa {
-    color: var(--green);
-    font-weight: 600;
-    text-decoration: underline;
-    margin-left: 6px;
+.sucursal-blob-corner-br {
+    position: absolute;
+    bottom: -15px;
+    right: -15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #BBF7D0;
+    border: 2px solid #86EFAC;
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
 }
 
-.link-mapa:hover {
+/* ===================================================
+   SECCIÓN SOBRE NOSOTROS / INFO DEL NEGOCIO
+=================================================== */
+.nosotros-section {
+    margin: 60px auto 40px;
+    max-width: 950px;
+    position: relative;
+}
+
+.nosotros-card {
+    position: relative;
+    background: white;
+    border: 3px solid var(--green);
+    border-radius: 28px;
+    padding: 44px 32px 34px;
+    box-shadow: 0 16px 36px rgba(22, 163, 74, 0.12);
+}
+
+.nosotros-header-pill {
+    position: absolute;
+    top: -24px;
+    left: 50%;
+    transform: translateX(-50%);
+    background: linear-gradient(135deg, #22C55E, #15803D);
+    border: 2px solid var(--dark-green);
+    padding: 8px 45px;
+    border-radius: 30px;
+    box-shadow: 3px 3px 0px var(--yellow), 0 4px 15px rgba(22, 163, 74, 0.3);
+    z-index: 2;
+}
+
+.nosotros-header-pill span {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    font-weight: 700;
+    color: white;
+    letter-spacing: 0.5px;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.25);
+    white-space: nowrap;
+}
+
+.nosotros-contenido {
+    display: flex;
+    flex-direction: column;
+    gap: 26px;
+}
+
+.nosotros-intro h3 {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
     color: var(--dark-green);
+    margin: 0 0 10px;
 }
 
-/* Estilos de estado para mensajes (exito, error, info, aviso) */
-.mensaje.info {
-    color: #1D4ED8;
-    background: #EFF6FF;
-    border: 1px solid #BFDBFE;
-    padding: 10px 16px;
+.nosotros-intro p {
+    color: #4B5563;
+    font-size: 15px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+}
+
+.nosotros-contacto-card {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: linear-gradient(135deg, #F0FDF4, #FEFCE8);
+    border: 1.5px solid #BBF7D0;
+    border-radius: 18px;
+    padding: 14px 18px;
+}
+
+.contacto-icono {
+    width: 42px;
+    height: 42px;
     border-radius: 12px;
+    background: var(--green);
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.contacto-icono svg {
+    width: 20px;
+    height: 20px;
 }
 
-.mensaje.exito {
-    color: #15803D;
-    background: #F0FDF4;
-    border: 1px solid #BBF7D0;
-    padding: 10px 16px;
-    border-radius: 12px;
+.contacto-info {
+    display: flex;
+    flex-direction: column;
+    font-size: 13.5px;
+}
+.contacto-info span {
+    color: #6B7280;
+}
+.contacto-info strong {
+    color: var(--dark-green);
+    font-size: 15px;
+    margin-top: 2px;
 }
 
-.mensaje.error {
-    color: #B91C1C;
-    background: #FEF2F2;
-    border: 1px solid #FECACA;
-    padding: 10px 16px;
-    border-radius: 12px;
+/* 3 Pilares destacados */
+.nosotros-pilares-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 18px;
 }
 
-.mensaje.aviso {
-    color: #B45309;
-    background: #FFFBEB;
-    border: 1px solid #FDE68A;
-    padding: 10px 16px;
-    border-radius: 12px;
+.pilar-card {
+    background: #F9FAFB;
+    border: 1.5px solid #E5E7EB;
+    border-radius: 20px;
+    padding: 22px 18px;
+    text-align: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transition: all 0.25s ease;
 }
 
-/* RESPONSIVE DESIGN (375px) */
-@media (max-width: 500px) {
+.pilar-card:hover {
+    background: white;
+    border-color: #86EFAC;
+    transform: translateY(-4px);
+    box-shadow: 0 10px 24px rgba(22, 163, 74, 0.12);
+}
+
+.pilar-icono-circulo {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(135deg, #DCFCE7, #FEF9C3);
+    border: 2px solid #86EFAC;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--green);
+    margin-bottom: 12px;
+}
+.pilar-icono-circulo svg {
+    width: 24px;
+    height: 24px;
+}
+
+.pilar-card h4 {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    color: var(--dark-green);
+    margin: 0 0 8px;
+}
+
+.pilar-card p {
+    font-size: 13px;
+    color: #6B7280;
+    line-height: 1.5;
+    margin: 0;
+}
+
+.nosotros-blob-corner {
+    position: absolute;
+    bottom: -15px;
+    left: -15px;
+    width: 38px;
+    height: 38px;
+    border-radius: 50%;
+    background: #BBF7D0;
+    border: 2px solid #86EFAC;
+    opacity: 0.85;
+    z-index: 0;
+    pointer-events: none;
+}
+
+/* ===================================================
+   RESPONSIVE DESIGN (TABLETS Y MÓVILES)
+=================================================== */
+@media (max-width: 900px) {
+    .sucursal-card-body {
+        grid-template-columns: 1fr;
+    }
+    .mapa-marco-estilizado {
+        height: 340px;
+    }
+    .nosotros-pilares-grid {
+        grid-template-columns: 1fr;
+    }
+}
+
+@media (max-width: 550px) {
     header {
         padding: 35px 15px 30px;
     }
     header h1 {
         font-size: 32px;
     }
-    header img {
-        width: 110px;
-        height: 110px;
+    .quick-nav-bar {
+        gap: 8px;
     }
+    .nav-chip {
+        padding: 7px 14px;
+        font-size: 13px;
+    }
+    .sucursal-card,
+    .nosotros-card,
     .carrito-card {
-        padding: 35px 16px 22px;
+        padding: 38px 16px 22px;
+        border-radius: 22px;
+    }
+    .sucursal-header-pill span,
+    .nosotros-header-pill span,
+    .carrito-header-pill span {
+        font-size: 18px;
+        white-space: normal;
+        text-align: center;
+    }
+    .sucursal-card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .sucursal-metricas-box {
+        grid-template-columns: 1fr;
+    }
+    .btn-calcular-ruta {
+        width: 100%;
+    }
+    .mapa-marco-estilizado {
+        height: 300px;
     }
     .carrito-item {
         flex-direction: column;
@@ -1138,19 +1683,5 @@ footer p {
     }
     .btn-sincronizar {
         justify-content: center;
-    }
-    .ubicacion-card {
-        padding: 35px 16px 22px;
-    }
-    .ubicacion-info-box {
-        flex-direction: column;
-        align-items: stretch;
-    }
-    .btn-ubicacion {
-        justify-content: center;
-        width: 100%;
-    }
-    .mapa-container {
-        height: 280px;
     }
 }

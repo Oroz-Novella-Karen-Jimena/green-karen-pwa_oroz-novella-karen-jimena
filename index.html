@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Karen - PWA</title>
-    <link rel="stylesheet" href="css/estilos.css">
+    <link rel="stylesheet" href="css/estilos.css?v=20261024b">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#14532D">
@@ -46,6 +46,14 @@
             <span class="feat-pill"><i data-lucide="apple" class="icon-feat"></i> Bowls & Ensaladas</span>
             <span class="feat-pill"><i data-lucide="heart" class="icon-feat"></i> 100% Nutritivo</span>
         </div>
+
+        <!-- Barra de navegación rápida con scroll suave -->
+        <nav class="quick-nav-bar" aria-label="Navegación rápida">
+            <a href="#catalogo-container" class="nav-chip"><i data-lucide="utensils" class="icon-nav"></i> Catálogo</a>
+            <a href="#carrito" class="nav-chip"><i data-lucide="shopping-cart" class="icon-nav"></i> Carrito</a>
+            <a href="#sucursal" class="nav-chip"><i data-lucide="map-pin" class="icon-nav"></i> Sucursal &amp; Ruta</a>
+            <a href="#nosotros" class="nav-chip"><i data-lucide="sparkles" class="icon-nav"></i> Sobre Nosotros</a>
+        </nav>
     </header>
 
     <main>
@@ -53,14 +61,14 @@
         <section id="filtros-container" class="filtros-section"></section>
 
         <!-- Catálogo dinámico (CSR) -->
-        <section class="catalogo-section">
+        <section class="catalogo-section" id="catalogo-container">
             <div id="catalogo">
                 <p class="cargando-texto">Cargando catálogo…</p>
             </div>
         </section>
 
         <!-- Carrito de compras -->
-        <section class="carrito-section">
+        <section class="carrito-section" id="carrito">
             <div class="carrito-card">
                 <div class="carrito-header-pill">
                     <span>Carrito</span>
@@ -117,33 +125,153 @@
             </div>
         </section>
 
-        <!-- Geolocalización y Sucursal -->
-        <section class="ubicacion-section">
-            <div class="ubicacion-card">
-                <div class="ubicacion-header-pill">
-                    <span>Nuestra Sucursal</span>
+        <!-- Sucursal y Geolocalización (Recuadro temático Green Karen) -->
+        <section class="sucursal-section" id="sucursal">
+            <div class="sucursal-card">
+                <!-- Pastilla superior estilo Green Karen -->
+                <div class="sucursal-header-pill">
+                    <span>Nuestra Sucursal &amp; Ruta</span>
                 </div>
-                <div class="ubicacion-info-box">
-                    <div class="ubicacion-detalles">
-                        <h3><i data-lucide="map-pin" class="icon-loc"></i> Green Karen — Plaza Central</h3>
-                        <p class="sucursal-direccion">Plaza Central, Local 12 · Hermosillo, Sonora</p>
-                        <p class="sucursal-horario"><i data-lucide="clock" class="icon-mini"></i> Abierto hoy: 8:00 AM – 9:00 PM</p>
+
+                <!-- Cabecera interna de la tarjeta -->
+                <div class="sucursal-card-header">
+                    <div class="sucursal-marca-box">
+                        <div class="sucursal-insignia">
+                            <i data-lucide="store"></i>
+                        </div>
+                        <div class="sucursal-titulos">
+                            <h3>Green Karen — Plaza Central</h3>
+                            <p class="sucursal-subtitulo">Hermosillo, Sonora · Barra de ensaladas frescas</p>
+                        </div>
                     </div>
-                    <button id="btn-ubicacion" type="button" class="btn-ubicacion">
-                        <i data-lucide="navigation" class="icon-btn"></i>
-                        Calcular distancia y ruta
-                    </button>
+                    <span id="estado-sucursal" class="estado-sucursal">Verificando horario...</span>
                 </div>
-                <p id="ubicacion-mensaje" class="mensaje"></p>
-                <!-- Mapa interactivo Leaflet -->
-                <div id="mapa-ruta" class="mapa-container" hidden></div>
-                <div class="ubicacion-blob-corner"></div>
+
+                <!-- Cuerpo principal en dos columnas (Información y Mapa) -->
+                <div class="sucursal-card-body">
+                    <!-- Columna Izquierda: Información de la sucursal y controles -->
+                    <div class="sucursal-info-col">
+                        <div class="sucursal-items-lista">
+                            <div class="sucursal-info-item">
+                                <div class="item-icono-circulo"><i data-lucide="map-pin"></i></div>
+                                <div class="item-texto">
+                                    <strong>Dirección</strong>
+                                    <span>Plaza Central, Local 12 · Hermosillo, Sonora</span>
+                                </div>
+                            </div>
+
+                            <div class="sucursal-info-item">
+                                <div class="item-icono-circulo"><i data-lucide="clock"></i></div>
+                                <div class="item-texto">
+                                    <strong>Horario de atención</strong>
+                                    <span>Lunes a Domingo · 8:00 AM – 9:00 PM</span>
+                                </div>
+                            </div>
+
+                            <div class="sucursal-info-item">
+                                <div class="item-icono-circulo"><i data-lucide="shopping-bag"></i></div>
+                                <div class="item-texto">
+                                    <strong>Modalidad</strong>
+                                    <span>Consumo en sucursal y pedidos para llevar</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <!-- Indicadores de Distancia y Tiempo -->
+                        <div class="sucursal-metricas-box">
+                            <div class="metrica-card">
+                                <i data-lucide="navigation-2" class="icon-metrica"></i>
+                                <span class="metrica-lbl">Distancia</span>
+                                <strong id="stat-distancia" class="metrica-num">--</strong>
+                            </div>
+                            <div class="metrica-card">
+                                <i data-lucide="car" class="icon-metrica"></i>
+                                <span class="metrica-lbl">En auto</span>
+                                <strong id="stat-tiempo" class="metrica-num">--</strong>
+                            </div>
+                        </div>
+
+                        <!-- Botón de calcular ruta -->
+                        <div class="sucursal-acciones-wrap">
+                            <button id="btn-ubicacion" type="button" class="btn-calcular-ruta">
+                                <i data-lucide="navigation" class="icon-btn"></i>
+                                Calcular distancia y ruta
+                            </button>
+                            <a id="link-mapa-externo" href="https://www.openstreetmap.org/?mlat=29.0833&amp;mlon=-110.9667#map=16/29.0833/-110.9667" target="_blank" rel="noopener" class="link-mapa-externo">
+                                <i data-lucide="external-link" class="icon-link"></i> Ver en OpenStreetMap ↗
+                            </a>
+                        </div>
+
+                        <p id="ubicacion-mensaje" class="mensaje"></p>
+                    </div>
+
+                    <!-- Columna Derecha: Mapa Leaflet interactivo -->
+                    <div class="sucursal-mapa-col">
+                        <div class="mapa-marco-estilizado">
+                            <div id="mapa-ruta" class="mapa-container"></div>
+                            <div class="mapa-leyenda-flotante">
+                                <span class="badge-leyenda"><i class="dot-color dot-verde"></i> Green Karen</span>
+                                <span class="badge-leyenda"><i class="dot-color dot-azul"></i> Tu ubicación</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Decoración circular en esquinas -->
+                <div class="sucursal-blob-corner-tl"></div>
+                <div class="sucursal-blob-corner-br"></div>
+            </div>
+        </section>
+
+        <!-- Información del Negocio: Sobre Green Karen -->
+        <section class="nosotros-section" id="nosotros">
+            <div class="nosotros-card">
+                <div class="nosotros-header-pill">
+                    <span>Sobre Green Karen</span>
+                </div>
+
+                <div class="nosotros-contenido">
+                    <div class="nosotros-intro">
+                        <h3>Comida saludable, fresca y preparada con pasión</h3>
+                        <p>En <strong>Green Karen</strong> preparamos ensaladas de autor, bowls nutritivos y bebidas naturales con ingredientes 100% frescos y seleccionados. Cuidamos cada detalle desde la cosecha hasta tu mesa para que disfrutes de una comida deliciosa que te llena de energía.</p>
+                        
+                        <div class="nosotros-contacto-card">
+                            <div class="contacto-icono"><i data-lucide="phone-call"></i></div>
+                            <div class="contacto-info">
+                                <span>¿Tienes un pedido para eventos o dudas sobre el menú?</span>
+                                <strong>WhatsApp: 662-555-0123 · Plaza Central, Local 12</strong>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="nosotros-pilares-grid">
+                        <div class="pilar-card">
+                            <div class="pilar-icono-circulo"><i data-lucide="leaf"></i></div>
+                            <h4>100% Fresco y Natural</h4>
+                            <p>Vegetales crujientes desinfectados y cortados en el día para garantizar su textura y nutrientes.</p>
+                        </div>
+
+                        <div class="pilar-card">
+                            <div class="pilar-icono-circulo"><i data-lucide="sparkles"></i></div>
+                            <h4>Aderezos Caseros</h4>
+                            <p>Recetas originales de Green Karen sin conservadores artificiales, bajas en sodio y deliciosas.</p>
+                        </div>
+
+                        <div class="pilar-card">
+                            <div class="pilar-icono-circulo"><i data-lucide="heart"></i></div>
+                            <h4>Empaques Ecológicos</h4>
+                            <p>Usamos materiales biodegradables y compostables para cuidar el bienestar de nuestra comunidad.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="nosotros-blob-corner"></div>
             </div>
         </section>
     </main>
 
     <footer>
-        <p><i data-lucide="map-pin" class="icon-footer"></i> Plaza Central, Local 12 &nbsp;|&nbsp; <i data-lucide="smartphone" class="icon-footer"></i> WhatsApp: 555-012-3456</p>
+        <p><i data-lucide="map-pin" class="icon-footer"></i> Plaza Central, Local 12 &nbsp;|&nbsp; <i data-lucide="smartphone" class="icon-footer"></i> WhatsApp: 662-555-0123</p>
         <p>&copy; 2026 Green Karen. Todos los derechos reservados.</p>
     </footer>
 
