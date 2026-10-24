@@ -25,23 +25,52 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background-color: var(--bg-color);
+    background-color: #F8FAF8;
+    background-image: 
+        radial-gradient(circle at 10% 15%, rgba(34, 197, 94, 0.08) 0%, transparent 40%),
+        radial-gradient(circle at 90% 40%, rgba(250, 204, 21, 0.09) 0%, transparent 35%),
+        radial-gradient(circle at 15% 75%, rgba(22, 163, 74, 0.07) 0%, transparent 40%),
+        radial-gradient(circle at 85% 85%, rgba(34, 197, 94, 0.08) 0%, transparent 35%),
+        radial-gradient(rgba(34, 197, 94, 0.12) 1.2px, transparent 1.2px);
+    background-size: 100% 100%, 100% 100%, 100% 100%, 100% 100%, 28px 28px;
+    background-position: 0 0, 0 0, 0 0, 0 0, 0 0;
     color: var(--dark);
     position: relative;
     overflow-x: hidden;
+    min-height: 100vh;
 }
 
-/* Background blobs */
+/* Esferas de luz ambiental viva en el fondo */
 body::before, body::after {
     content: '';
     position: fixed;
     border-radius: 50%;
     z-index: -1;
-    filter: blur(80px);
-    opacity: 0.25;
+    filter: blur(90px);
+    pointer-events: none;
+    animation: ambientPulse 12s ease-in-out infinite alternate;
 }
-body::before { width: 500px; height: 500px; background: var(--green); top: -200px; left: -200px; }
-body::after { width: 400px; height: 400px; background: var(--yellow); bottom: -100px; right: -150px; }
+body::before {
+    width: 550px;
+    height: 550px;
+    background: radial-gradient(circle, rgba(34, 197, 94, 0.28), rgba(20, 83, 45, 0.05));
+    top: -150px;
+    left: -180px;
+}
+body::after {
+    width: 450px;
+    height: 450px;
+    background: radial-gradient(circle, rgba(250, 204, 21, 0.25), rgba(234, 179, 8, 0.05));
+    bottom: -100px;
+    right: -140px;
+    animation-delay: -6s;
+}
+
+@keyframes ambientPulse {
+    0% { transform: scale(1) translate(0, 0); opacity: 0.25; }
+    50% { transform: scale(1.1) translate(20px, -20px); opacity: 0.35; }
+    100% { transform: scale(1) translate(0, 0); opacity: 0.25; }
+}
 
 /* HEADER PREMIUM GREEN KAREN */
 header.app-header {
@@ -723,27 +752,345 @@ main {
     background: #D97706;
 }
 
-/* FOOTER */
-footer {
-    background: var(--dark-green);
+/* ===================================================
+   FOOTER PREMIUM BOTÁNICO GREEN KAREN
+=================================================== */
+footer.app-footer {
+    position: relative;
+    background: radial-gradient(circle at 50% 0%, rgba(34, 197, 94, 0.22) 0%, transparent 60%),
+                radial-gradient(circle at 90% 100%, rgba(250, 204, 21, 0.18) 0%, transparent 55%),
+                linear-gradient(155deg, #052E16 0%, #14532D 45%, #0B381D 100%);
     color: white;
-    text-align: center;
-    padding: 50px 20px;
-    margin-top: 60px;
-    border-top-left-radius: 50px;
-    border-top-right-radius: 50px;
+    margin-top: 80px;
+    padding: 70px 24px 0;
+    border-top-left-radius: 60px;
+    border-top-right-radius: 60px;
+    border-top: 5px solid var(--yellow);
+    box-shadow: 0 -15px 40px rgba(20, 83, 45, 0.2);
+    overflow: hidden;
 }
-footer p {
-    margin: 8px 0;
-    opacity: 0.9;
-    font-size: 15px;
+
+/* Hojas botánicas decorativas en footer */
+.footer-leaf {
+    position: absolute;
+    color: rgba(255, 255, 255, 0.08);
+    pointer-events: none;
+    z-index: 0;
 }
-.icon-footer {
+.leaf-f1 { top: 20px; left: 40px; width: 60px; height: 60px; transform: rotate(-25deg); }
+.leaf-f2 { bottom: 80px; right: 50px; width: 80px; height: 80px; transform: rotate(35deg); }
+.leaf-f3 { top: 40%; left: 45%; width: 45px; height: 45px; opacity: 0.05; }
+.footer-leaf svg { width: 100%; height: 100%; }
+
+.footer-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: 1.4fr 1fr 1.1fr 1.1fr;
+    gap: 40px;
+    position: relative;
+    z-index: 1;
+    padding-bottom: 50px;
+}
+
+.footer-col {
+    display: flex;
+    flex-direction: column;
+}
+
+/* Columna de Marca */
+.footer-logo-row {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    margin-bottom: 16px;
+}
+
+.footer-logo-ring {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    padding: 3px;
+    background: linear-gradient(135deg, var(--yellow), #86EFAC);
+    box-shadow: 0 4px 16px rgba(250, 204, 21, 0.35);
+    flex-shrink: 0;
+}
+
+.footer-logo-img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+    object-fit: cover;
+    display: block;
+}
+
+.footer-brand-name {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    font-weight: 700;
+    margin: 0;
+    color: white;
+    letter-spacing: 0.5px;
+}
+
+.footer-tagline {
+    font-size: 12px;
+    color: var(--yellow);
+    font-weight: 600;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    display: block;
+    margin-top: 2px;
+}
+
+.footer-brand-desc {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13.5px;
+    line-height: 1.6;
+    margin: 0 0 18px;
+}
+
+.footer-badges-wrap {
+    display: flex;
+    gap: 8px;
+    flex-wrap: wrap;
+}
+
+.f-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    padding: 4px 12px;
+    border-radius: 20px;
+    font-size: 11.5px;
+    font-weight: 500;
+    color: #DCFCE7;
+}
+.f-badge svg {
+    width: 13px;
+    height: 13px;
+    color: var(--yellow);
+}
+
+/* Títulos de columnas */
+.footer-col-title {
+    font-family: 'Playfair Display', serif;
+    font-size: 18px;
+    font-weight: 700;
+    color: white;
+    margin: 0 0 18px;
+    position: relative;
+    padding-bottom: 8px;
+}
+.footer-col-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 35px;
+    height: 3px;
+    background: linear-gradient(90deg, var(--yellow), transparent);
+    border-radius: 2px;
+}
+
+/* Enlaces */
+.footer-links-list {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+}
+
+.footer-links-list a {
+    color: rgba(255, 255, 255, 0.8);
+    text-decoration: none;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: all 0.2s ease;
+}
+
+.footer-links-list a svg {
+    width: 15px;
+    height: 15px;
+    color: var(--yellow);
+    transition: transform 0.2s ease;
+}
+
+.footer-links-list a:hover {
+    color: white;
+    transform: translateX(4px);
+}
+.footer-links-list a:hover svg {
+    transform: scale(1.2);
+}
+
+/* Información de sucursal */
+.footer-info-block {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.f-info-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    font-size: 13px;
+    line-height: 1.4;
+}
+
+.f-info-icon {
+    width: 16px;
+    height: 16px;
+    color: var(--yellow);
+    flex-shrink: 0;
+    margin-top: 2px;
+}
+
+.f-info-item strong {
+    display: block;
+    color: white;
+    font-weight: 600;
+}
+.f-info-item span {
+    color: rgba(255, 255, 255, 0.75);
+    font-size: 12.5px;
+}
+
+/* Columna de Pedidos y WhatsApp */
+.f-pedidos-text {
+    color: rgba(255, 255, 255, 0.82);
+    font-size: 13.5px;
+    line-height: 1.5;
+    margin: 0 0 16px;
+}
+
+.btn-footer-wa {
+    background: linear-gradient(135deg, #22C55E, #16A34A);
+    color: white;
+    text-decoration: none;
+    padding: 12px 18px;
+    border-radius: 30px;
+    font-weight: 600;
+    font-size: 14px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    box-shadow: 0 4px 16px rgba(34, 197, 94, 0.35);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.25s ease;
+}
+.btn-footer-wa:hover {
+    background: linear-gradient(135deg, #16A34A, #15803D);
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(34, 197, 94, 0.45);
+}
+.btn-footer-wa .icon-wa {
     width: 18px;
     height: 18px;
-    vertical-align: text-bottom;
+}
+
+.f-tel-directo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    margin-top: 14px;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+}
+.f-tel-directo .icon-tel {
+    width: 14px;
+    height: 14px;
     color: var(--yellow);
-    margin-right: 5px;
+}
+
+/* Barra inferior del Footer */
+.footer-bottom-bar {
+    border-top: 1px solid rgba(255, 255, 255, 0.12);
+    padding: 22px 0 28px;
+    position: relative;
+    z-index: 1;
+}
+
+.footer-bottom-container {
+    max-width: 1100px;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 20px;
+    flex-wrap: wrap;
+    font-size: 13px;
+    color: rgba(255, 255, 255, 0.75);
+}
+
+.footer-bottom-container p {
+    margin: 0;
+}
+.footer-bottom-container strong {
+    color: white;
+}
+
+.btn-subir {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    color: white;
+    text-decoration: none;
+    padding: 7px 16px;
+    border-radius: 20px;
+    font-size: 12.5px;
+    font-weight: 600;
+    transition: all 0.25s ease;
+}
+.btn-subir svg {
+    width: 14px;
+    height: 14px;
+    color: var(--yellow);
+}
+.btn-subir:hover {
+    background: var(--yellow);
+    color: var(--dark-green);
+    border-color: var(--yellow);
+    transform: translateY(-2px);
+}
+.btn-subir:hover svg {
+    color: var(--dark-green);
+}
+
+/* Responsividad del Footer */
+@media (max-width: 900px) {
+    .footer-container {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+    }
+}
+
+@media (max-width: 600px) {
+    footer.app-footer {
+        padding: 50px 18px 0;
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+    }
+    .footer-container {
+        grid-template-columns: 1fr;
+        gap: 30px;
+    }
+    .footer-bottom-container {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+        gap: 12px;
+    }
 }
 
 /* ANIMACIONES */

@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Karen - PWA</title>
-    <link rel="stylesheet" href="css/estilos.css?v=20261024b">
+    <link rel="stylesheet" href="css/estilos.css?v=20261024c">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#14532D">
@@ -12,7 +12,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
 </head>
 <body>
-    <header class="app-header">
+    <header class="app-header" id="top">
         <!-- Elementos botánicos flotantes animados -->
         <div class="leaf-bg leaf-1"><i data-lucide="leaf"></i></div>
         <div class="leaf-bg leaf-2"><i data-lucide="sprout"></i></div>
@@ -270,9 +270,103 @@
         </section>
     </main>
 
-    <footer>
-        <p><i data-lucide="map-pin" class="icon-footer"></i> Plaza Central, Local 12 &nbsp;|&nbsp; <i data-lucide="smartphone" class="icon-footer"></i> WhatsApp: 662-555-0123</p>
-        <p>&copy; 2026 Green Karen. Todos los derechos reservados.</p>
+    <!-- Footer Premium Green Karen -->
+    <footer class="app-footer" id="contacto">
+        <!-- Elementos botánicos decorativos flotantes -->
+        <div class="footer-leaf leaf-f1"><i data-lucide="leaf"></i></div>
+        <div class="footer-leaf leaf-f2"><i data-lucide="sprout"></i></div>
+        <div class="footer-leaf leaf-f3"><i data-lucide="sparkles"></i></div>
+
+        <div class="footer-container">
+            <!-- Columna 1: Marca y Filosofía -->
+            <div class="footer-col footer-brand-col">
+                <div class="footer-logo-row">
+                    <div class="footer-logo-ring">
+                        <img src="icons/logo.jpg" alt="Logo Green Karen" class="footer-logo-img">
+                    </div>
+                    <div>
+                        <h3 class="footer-brand-name">Green Karen</h3>
+                        <span class="footer-tagline">Fresh &amp; Healthy Salad Bar</span>
+                    </div>
+                </div>
+                <p class="footer-brand-desc">
+                    Ensaladas gourmet, bowls nutritivos y aderezos artesanales preparados diariamente con ingredientes frescos cosechados en Sonora.
+                </p>
+                <div class="footer-badges-wrap">
+                    <span class="f-badge"><i data-lucide="leaf"></i> 100% Fresco</span>
+                    <span class="f-badge"><i data-lucide="shield-check"></i> Calidad Premium</span>
+                    <span class="f-badge"><i data-lucide="heart"></i> Eco-Friendly</span>
+                </div>
+            </div>
+
+            <!-- Columna 2: Navegación Rápida -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Explorar</h4>
+                <ul class="footer-links-list">
+                    <li><a href="#catalogo-container"><i data-lucide="utensils"></i> Menú de Ensaladas</a></li>
+                    <li><a href="#carrito"><i data-lucide="shopping-cart"></i> Carrito de Compras</a></li>
+                    <li><a href="#sucursal"><i data-lucide="map-pin"></i> Sucursal &amp; Ruta GPS</a></li>
+                    <li><a href="#nosotros"><i data-lucide="sparkles"></i> Sobre Nosotros</a></li>
+                    <li><a href="#notificaciones-mensaje"><i data-lucide="bell"></i> Promociones del Día</a></li>
+                </ul>
+            </div>
+
+            <!-- Columna 3: Sucursal & Horario -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Sucursal</h4>
+                <div class="footer-info-block">
+                    <div class="f-info-item">
+                        <i data-lucide="map-pin" class="f-info-icon"></i>
+                        <div>
+                            <strong>Plaza Central, Local 12</strong>
+                            <span>Hermosillo, Sonora, México</span>
+                        </div>
+                    </div>
+                    <div class="f-info-item">
+                        <i data-lucide="clock" class="f-info-icon"></i>
+                        <div>
+                            <strong>Horario de atención</strong>
+                            <span>Lunes a Domingo · 8:00 AM – 9:00 PM</span>
+                        </div>
+                    </div>
+                    <div class="f-info-item">
+                        <i data-lucide="shopping-bag" class="f-info-icon"></i>
+                        <div>
+                            <strong>Modalidades</strong>
+                            <span>Comedor, Pick-Up y eventos</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Columna 4: Pedidos & WhatsApp -->
+            <div class="footer-col">
+                <h4 class="footer-col-title">Pedidos Directos</h4>
+                <p class="f-pedidos-text">
+                    ¿Quieres personalizar tu bowl o tienes un pedido especial? Escríbenos directamente:
+                </p>
+                <a href="https://wa.me/526625550123?text=Hola%20Green%20Karen,%20me%20gustar%C3%ADa%20hacer%20un%20pedido" target="_blank" rel="noopener" class="btn-footer-wa">
+                    <i data-lucide="message-circle" class="icon-wa"></i>
+                    <span>Pedir por WhatsApp</span>
+                </a>
+                <div class="f-tel-directo">
+                    <i data-lucide="phone" class="icon-tel"></i>
+                    <span>Tel: 662-555-0123</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Línea inferior del footer -->
+        <div class="footer-bottom-bar">
+            <div class="footer-bottom-container">
+                <p class="f-copy">&copy; 2026 <strong>Green Karen</strong> · PWA Salad Bar. Todos los derechos reservados.</p>
+                <p class="f-author">Desarrollado por <strong>Karen Jimena Oroz Novella</strong> · ING10-1</p>
+                <a href="#top" class="btn-subir" aria-label="Volver arriba">
+                    <i data-lucide="arrow-up"></i>
+                    <span>Subir</span>
+                </a>
+            </div>
+        </div>
     </footer>
 
     <!-- Scripts de la aplicación -->
