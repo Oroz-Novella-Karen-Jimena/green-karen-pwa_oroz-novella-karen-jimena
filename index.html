@@ -4,7 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Karen - PWA</title>
-    <link rel="stylesheet" href="css/estilos.css?v=20261024d">
+    <link rel="stylesheet" href="css/estilos.css?v=20261024e">
     <script src="https://unpkg.com/lucide@latest"></script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#14532D">
@@ -13,29 +13,21 @@
 </head>
 <body>
     <header class="app-header" id="top">
-        <!-- Burbujas gourmet flotantes de ingredientes frescos -->
-        <div class="header-ingredient ing-1">
-            <div class="ing-glass"><i data-lucide="salad"></i></div>
-            <span class="ing-label">Bowls</span>
+        <!-- Siluetas botánicas sutiles de fondo (marca de agua en esquinas) -->
+        <div class="header-decor-corner decor-left">
+            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M20 140C20 90 60 50 140 20C100 60 90 100 80 140" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M60 85C45 70 40 50 42 30C58 35 75 42 85 60" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M90 110C85 95 90 75 105 65C112 80 115 95 110 115" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
         </div>
-        <div class="header-ingredient ing-2">
-            <div class="ing-glass"><i data-lucide="apple"></i></div>
-            <span class="ing-label">Fresco</span>
+        <div class="header-decor-corner decor-right">
+            <svg viewBox="0 0 160 160" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M140 140C140 90 100 50 20 20C60 60 70 100 80 140" stroke="white" stroke-width="2.5" stroke-linecap="round"/>
+                <path d="M100 85C115 70 120 50 118 30C102 35 85 42 75 60" stroke="white" stroke-width="2" stroke-linecap="round"/>
+                <path d="M70 110C75 95 70 75 55 65C48 80 45 95 50 115" stroke="white" stroke-width="2" stroke-linecap="round"/>
+            </svg>
         </div>
-        <div class="header-ingredient ing-3">
-            <div class="ing-glass"><i data-lucide="carrot"></i></div>
-            <span class="ing-label">Natural</span>
-        </div>
-        <div class="header-ingredient ing-4">
-            <div class="ing-glass"><i data-lucide="sprout"></i></div>
-            <span class="ing-label">Orgánico</span>
-        </div>
-
-        <!-- Hojas y destellos ambientales con profundidad -->
-        <div class="ambient-leaf amb-1"><i data-lucide="leaf"></i></div>
-        <div class="ambient-leaf amb-2"><i data-lucide="sparkles"></i></div>
-        <div class="ambient-leaf amb-3"><i data-lucide="heart"></i></div>
-        <div class="ambient-leaf amb-4"><i data-lucide="leaf"></i></div>
 
         <!-- Indicador de conexión con glassmorphism -->
         <span id="estado-conexion" class="pill-conexion conectado">
@@ -56,7 +48,7 @@
         </div>
 
         <h1>Green Karen</h1>
-        <p class="subtitle">Comida saludable y ensaladas preparadas al momento</p>
+        <p class="subtitle">Comida saludable, bowls nutritivos y ensaladas preparadas al momento</p>
 
         <!-- Chips destacados de la marca -->
         <div class="header-features">
@@ -72,6 +64,14 @@
             <a href="#sucursal" class="nav-chip"><i data-lucide="map-pin" class="icon-nav"></i> Sucursal &amp; Ruta</a>
             <a href="#nosotros" class="nav-chip"><i data-lucide="sparkles" class="icon-nav"></i> Sobre Nosotros</a>
         </nav>
+
+        <!-- Onda orgánica botánica con borde dorado -->
+        <div class="header-wave-wrap">
+            <svg class="header-wave-svg" viewBox="0 0 1440 80" fill="none" preserveAspectRatio="none">
+                <path d="M0,25 C360,65 540,75 720,45 C900,15 1100,60 1440,30 L1440,80 L0,80 Z" fill="#F8FAF8"></path>
+                <path d="M0,25 C360,65 540,75 720,45 C900,15 1100,60 1440,30" stroke="#FACC15" stroke-width="3" fill="none"></path>
+            </svg>
+        </div>
     </header>
 
     <main>
