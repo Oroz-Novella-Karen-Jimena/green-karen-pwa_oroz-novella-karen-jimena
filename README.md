@@ -24,3 +24,11 @@
 
 ### CSR (JavaScript): el div del catálogo llega vacío
 ![Código fuente CSR](docs/captura-csr.png)
+
+## Funciones PWA (avance 3)
+
+### Código fuente de index.html: manifest y registro del Service Worker
+![Código fuente index.html](docs/captura-index-pwa.png)
+
+### Código fuente de sw.js: precache con Workbox
+![Código fuente sw.js](docs/captura-sw.png)
