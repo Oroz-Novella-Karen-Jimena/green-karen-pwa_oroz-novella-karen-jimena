@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Green Karen - PWA</title>
-    <link rel="stylesheet" href="css/estilos.css?v=20261024e">
-    <script src="https://unpkg.com/lucide@latest"></script>
+    <link rel="stylesheet" href="css/estilos.css">
+    <script src="js/lucide.min.js"></script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#14532D">
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
@@ -395,7 +395,11 @@
     <!-- Leaflet y geolocalización -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script src="js/geolocalizacion.js"></script>
-    <script>lucide.createIcons();</script>
+    <script>
+        if (typeof lucide !== "undefined") {
+            lucide.createIcons();
+        }
+    </script>
     <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");</script>
 </body>
 </html>
