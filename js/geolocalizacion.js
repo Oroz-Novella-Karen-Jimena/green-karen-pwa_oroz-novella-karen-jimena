@@ -100,7 +100,7 @@ function iniciarMapa() {
         maxZoom: 19
     }).addTo(mapa);
 
-    L.marker([SUCURSAL.lat, SUCURSAL.lon], { icon: iconoSucursal() })
+    L.marker([SUCURSAL.lat, SUCURSAL.lon], { icon: iconoSucursal(), title: SUCURSAL.nombre })
         .addTo(mapa)
         .bindPopup(`<strong>${SUCURSAL.nombre}</strong><br><small>${SUCURSAL.direccion}</small>`);
 

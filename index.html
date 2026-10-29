@@ -3,13 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Green Karen - Comida saludable, bowls nutritivos y ensaladas frescas preparadas al momento en Hermosillo. PWA moderna.">
     <title>Green Karen - PWA</title>
+    <link rel="preload" as="image" href="icons/logo.jpg" fetchpriority="high">
+    <link rel="preload" href="catalogo.json" as="fetch" crossorigin>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Poppins:wght@300;400;500;600;700&display=swap"></noscript>
     <link rel="stylesheet" href="css/estilos.css">
-    <script src="js/lucide.min.js"></script>
+    <script src="js/lucide.min.js" defer></script>
     <link rel="manifest" href="manifest.json">
     <meta name="theme-color" content="#14532D">
     <link rel="icon" href="icons/icon.svg" type="image/svg+xml">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css" media="print" onload="this.media='all'">
+    <noscript><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.css"></noscript>
 </head>
 <body>
     <header class="app-header" id="top">
@@ -38,7 +47,7 @@
         <!-- Logo con anillo resplandeciente -->
         <div class="logo-wrapper">
             <div class="logo-glow-ring"></div>
-            <img src="icons/logo.jpg" alt="Logo Green Karen" class="logo-img">
+            <img src="icons/logo.jpg" alt="Logo Green Karen" class="logo-img" width="110" height="110">
         </div>
 
         <div class="header-badge">
@@ -396,9 +405,11 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/leaflet/1.9.4/leaflet.min.js"></script>
     <script src="js/geolocalizacion.js"></script>
     <script>
-        if (typeof lucide !== "undefined") {
-            lucide.createIcons();
-        }
+        document.addEventListener("DOMContentLoaded", () => {
+            if (typeof lucide !== "undefined") {
+                lucide.createIcons();
+            }
+        });
     </script>
     <script>if ("serviceWorker" in navigator) navigator.serviceWorker.register("sw.js");</script>
 </body>

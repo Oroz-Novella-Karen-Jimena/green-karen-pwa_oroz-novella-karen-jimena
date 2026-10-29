@@ -91,7 +91,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 card.className = "card";
                 card.innerHTML = `
                     <div class="img-wrapper">
-                        <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy">
+                        <img src="${producto.imagen}" alt="${producto.nombre}" loading="lazy" width="300" height="200">
                         <div class="badge-price">$${producto.precio}</div>
                     </div>
                     <!-- Stock debajo de la foto -->
