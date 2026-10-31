@@ -1,4 +1,4 @@
-if(!self.define){let e,i={};const c=(c,a)=>(c=new URL(c+".js",a).href,i[c]||new Promise(i=>{if("document"in self){const e=document.createElement("script");e.src=c,e.onload=i,document.head.appendChild(e)}else e=c,importScripts(c),i()}).then(()=>{let e=i[c];if(!e)throw new Error(`Module ${c} didn’t register its module`);return e}));self.define=(a,o)=>{const r=e||("document"in self?document.currentScript.src:"")||location.href;if(i[r])return;let s={};const n=e=>c(e,r),f={module:{uri:r},exports:s,require:n};i[r]=Promise.all(a.map(e=>f[e]||n(e))).then(e=>(o(...e),s))}}define(["./workbox-ee13fbdc"],function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([
+if(!self.define){let e,i={};const c=(c,a)=>(c=new URL(c+".js",a).href,i[c]||new Promise(i=>{if("document"in self){const e=document.createElement("script");e.src=c,e.onload=i,document.head.appendChild(e)}else e=c,importScripts(c),i()}).then(()=>{let e=i[c];if(!e)throw new Error(`Module ${c} didn’t register its module`);return e}));self.define=(a,o)=>{const r=e||("document"in self?document.currentScript.src:"")||location.href;if(i[r])return;let s={};const n=e=>c(e,r),d={module:{uri:r},exports:s,require:n};i[r]=Promise.all(a.map(e=>d[e]||n(e))).then(e=>(o(...e),s))}}define(["./workbox-ee13fbdc"],function(e){"use strict";self.skipWaiting(),e.clientsClaim(),e.precacheAndRoute([
 {url:"manifest.json",revision:"90d19b3af2e2bbbcc220cfe3e8191546"},
 {url:"index.html",revision:"2e2510582204e1657b33086aee0235e9"},
 {url:"catalogo.json",revision:"a79ba8826cf5fb2ae71689566c333684"},
@@ -23,7 +23,7 @@ if(!self.define){let e,i={};const c=(c,a)=>(c=new URL(c+".js",a).href,i[c]||new 
 {url:"img/bowl_mexicano.jpg",revision:"bccd2688d83bb68e69524da97bbaf16e"},
 {url:"img/agua_pepino.jpg",revision:"1c0c66f95ccdddcf5d1140f6c57b160c"},
 {url:"img/acai_bowl.jpg",revision:"8c47bb8fc40ddcb17a18b2c2f8e4d1c7"},
-{url:"icons/logo.jpg",revision:"62a3fd3e0e7f573c5445fff56a1b5832"},
+{url:"icons/logo.jpg",revision:"d65d67326ea33abf170931e55720b24c"},
 {url:"icons/icon.svg",revision:"01991ed6a605232cbc298617d15d9fa0"},
 {url:"icons/icon-512.png",revision:"40afa514d435bff0837c7a9ee423f18d"},
 {url:"icons/icon-192.png",revision:"917478d144f294175436ba9b49918ab8"},
